@@ -5,7 +5,8 @@ var tripexp = angular.module('tripexp', [
   'ngRoute',
   'ngResource',
   'tripexp.login',
-  'tripexp.home'
+  'tripexp.home',
+  'tripexp.trip'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
