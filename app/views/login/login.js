@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tripexp.login', ['ngRoute'])
+angular.module('tripexp.login', [])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
@@ -11,7 +11,7 @@ angular.module('tripexp.login', ['ngRoute'])
 
 .controller('LoginCtrl', function($scope) {
   $scope.login = function(){
-    console.log("BUtton works!")
+    console.log("Button works!")
   }
   console.log("congrats you reached the login")
 });

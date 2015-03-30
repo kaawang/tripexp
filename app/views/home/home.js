@@ -1,17 +1,14 @@
 'use strict';
 
-angular.module('tripexp.login', ['ngRoute'])
+angular.module('tripexp.home', [])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/login', {
-    templateUrl: 'views/login/login.html',
-    controller: 'LoginCtrl'
+  $routeProvider.when('/home', {
+    templateUrl: 'views/home/home.html',
+    controller: 'HomeCtrl'
   });
 }])
 
-.controller('LoginCtrl', function($scope) {
-  $scope.login = function(){
-    console.log("BUtton works!")
-  }
-  console.log("congrats you reached the login")
+.controller('HomeCtrl', function($scope) {
+  console.log("congrats you reached the home")
 });
