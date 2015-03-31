@@ -41,7 +41,7 @@ angular.module('tripexp.trip', ['ngAutocomplete', 'pickadate'])
     console.log(data);
     var request = {
       method: "POST",
-      url: "https://localhost:3000/api/users/1/trips",
+      url: "http://localhost:3000/api/users/1/trips",
       data: data
     }
     console.log(request)
