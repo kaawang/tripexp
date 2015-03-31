@@ -2,15 +2,18 @@
 
 <h2>Create that Trip!</h2>
 <h3>
-    <form>
-      <p>Trip Name: <input type="text" placeholder="weekend getaway" /required></p>
-      <p>Trip Location: <input type="text" ng-autocomplete="result" details="details" options="options" placeholder="yosemite" /required></p>
-      <p>
-        Trip Date: 
-        <input type="text" pickadate ng-model="start.date" placeholder="start date" /required>
-        <input type="text" pickadate ng-model="end.date" placeholder="end date" /required>
-      </p>
-      <button>Create</button>
+    <form name="tripForm" ng-submit="createTrip(tripdetails)">
+      <div>
+        <p>Trip Name: <input value="yosemite" type="text" ng-model="tripdetails.name" placeholder="weekend getaway" /required></p>
+        <p>Trip Location: <input type="text" placeholder="yosemite" ng-autocomplete="tripdetails.location" ng-model="tripdetails.location" details="details" options="options" /required></p>
+
+        <p>
+          Trip Date: 
+          <input value="2015-04-01" pickadate ng-model="tripdetails.startDate" placeholder="start date" min-date="minDate" max-date="maxDate" /required>
+          <input value="2015-04-03" pickadate ng-model="tripdetails.endDate" placeholder="end date" min-date="minDate" max-date="maxDate" /required>
+        </p>
+        <button type="submit" ng-disabled="tripForm.$invalid">Create</button>
+      </div>
     </form> 
   </span>
 </h3>
