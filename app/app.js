@@ -4,6 +4,8 @@
 var tripexp = angular.module('tripexp', [
   'ngRoute',
   'ngResource',
+  'ngAutocomplete',
+  'pickadate',
   'tripexp.login',
   'tripexp.home',
   'tripexp.trip'

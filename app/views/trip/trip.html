@@ -1,3 +1,18 @@
-<h2>Trip Page</h2>
+<!-- <button ng-click="hitApi()">MOMENT OF TRUTH</button> -->
 
-<button ng-click="hitApi()">MOMENT OF TRUTH</button>
+<h2>Create that Trip!</h2>
+<h3>
+    <form>
+      <p>Trip Name: <input type="text" placeholder="weekend getaway" /required></p>
+      <p>Trip Location: <input type="text" ng-autocomplete="result" details="details" options="options" placeholder="yosemite" /required></p>
+      <p>
+        Trip Date: 
+        <input type="text" pickadate ng-model="start.date" placeholder="start date" /required>
+        <input type="text" pickadate ng-model="end.date" placeholder="end date" /required>
+      </p>
+      <button>Create</button>
+    </form> 
+  </span>
+</h3>
+
+<!-- <input pickadate ng-model="date"></input> -->
