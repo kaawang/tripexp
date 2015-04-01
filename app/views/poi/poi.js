@@ -1,73 +1,45 @@
 'use strict';
 
-angular.module('tripexp.trip', ['ngAutocomplete', 'pickadate'])
+angular.module('tripexp.poi', ['ngAutocomplete'])
 
 .config(['$routeProvider', function($routeProvider, $locationProvider) {
-  $routeProvider.when('/trip', {
-    templateUrl: 'views/trip/trip.html',
-    controller: 'TripCtrl'
+  $routeProvider.when('/poi', {
+    templateUrl: 'views/poi/poi.html',
+    controller: 'PoiCtrl'
   });
 }])
 
-.controller('TripCtrl', function($scope, $http, $route, $location, $window) {
+.controller('PoiCtrl', function($scope, $http, $route, $location, $window) {
   
-  // NGAUTOCOMPLETE - TRIP LOCATION FIELD
+  // ADD FORMS
 
-  $scope.options = null;
-  $scope.details = '';
+  $scope.table = { fields: [''] };
 
-  $scope.tripdetails = {};
-
-  // DATE ORGANIZER
-  var date = new Date();
-  var dateArray = date.toString().split(" ");
-  if (dateArray[1] === "Oct" || dateArray[1] === "Nov" || dateArray[1] === "Dec") {
-    var month = "-1";
-  } else {
-    var month = "-0";
+  $scope.addForm = function() {
+    $scope.table.fields.push('');
   }
-  var dateString = dateArray[3] + month + (date.getMonth()+1) + "-" + dateArray[2]
-  $scope.minDate = dateString;
-  $scope.maxDate = "3000-12-31";
 
   // POSTING TRIP DETAILS TO API
-  $scope.createTrip = function(tripdetails){
+  $scope.submitPois = function(){
+    console.log($scope.table);
     var data = {
-       tripName: tripdetails.name,
-       tripLocation: tripdetails.location,
-       tripStartDate: tripdetails.startDate,
-       tripEndDate: tripdetails.endDate
+       poisAddressArray: $scope.table.fields
     };
-    console.log(data);
-    var request = {
-      method: "POST",
-      url: "http://localhost:3000/api/users/1/trips",
-      data: data
-    }
-    console.log(request)
-    $http(request).success(function(response){
-      console.log("success")
-      console.log(response)
-      $location.path("/pois");
-      // REDIRECTS UPON SUCCESS
-    }).error(function(response){
-      console.log("error")
-      console.log(response)
-    })
+    console.log(data.poisAddressArray);
+    // var request = {
+    //   method: "POST",
+    //   url: "http://localhost:3000/api/users/1/trips",
+    //   data: data
+    // }
+    // console.log(request)
+    // $http(request).success(function(response){
+    //   console.log("success")
+    //   console.log(response)
+    //   $location.path("/pois");
+    //   // REDIRECTS UPON SUCCESS
+    // }).error(function(response){
+    //   console.log("error")
+    //   console.log(response)
+    // })
   }
 });  // End of controller
-
-
-
-
-// .controller('TripCtrl', function($scope, $http) {
-//   $scope.hitApi = function(){
-//     $http.get('http://localhost:3000/api/users/1/trips/2/pois').success(function(response){
-//       console.log(response);
-//     }).error(function(error){
-//       console.log(error);
-//     });
-//     // console.log("Button works!")
-//   }
-//   console.log("congrats you reached the trip")
-// });

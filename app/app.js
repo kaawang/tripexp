@@ -8,7 +8,8 @@ var tripexp = angular.module('tripexp', [
   'pickadate',
   'tripexp.login',
   'tripexp.home',
-  'tripexp.trip'
+  'tripexp.trip',
+  'tripexp.poi'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
