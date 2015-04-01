@@ -4,8 +4,11 @@
 var tripexp = angular.module('tripexp', [
   'ngRoute',
   'ngResource',
+  'ngAutocomplete',
+  'pickadate',
   'tripexp.login',
-  'tripexp.home'
+  'tripexp.home',
+  'tripexp.trip'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
