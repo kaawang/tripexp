@@ -2,14 +2,14 @@
 
 angular.module('tripexp.trip', ['ngAutocomplete', 'pickadate'])
 
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', function($routeProvider, $locationProvider) {
   $routeProvider.when('/trip', {
     templateUrl: 'views/trip/trip.html',
     controller: 'TripCtrl'
   });
 }])
 
-.controller('TripCtrl', function($scope, $http) {
+.controller('TripCtrl', function($scope, $http, $route, $location, $window) {
   
   // NGAUTOCOMPLETE - TRIP LOCATION FIELD
 
@@ -48,6 +48,8 @@ angular.module('tripexp.trip', ['ngAutocomplete', 'pickadate'])
     $http(request).success(function(response){
       console.log("success")
       console.log(response)
+      $location.path("/pois");
+      // REDIRECTS UPON SUCCESS
     }).error(function(response){
       console.log("error")
       console.log(response)
