@@ -1,11 +1,12 @@
 <h2>Add Some Points of Interests!</h2>
 <div>
-<form name="poiForm" ng-submit="submitPois()">
-      <input ng-repeat="field in table.fields track by $index" type="text" ng-model="table.fields[$index]" /required>
-    <div>
-      <p><button ng-click="addForm()">+</button></p>
-      <p><button id="button" type="submit">Plan it for me</button></p>
-    </div>
-    <pre>{{ table | json }}</pre>
+  <form name="poiForm" ng-submit="submitPois()">
+    <input ng-repeat="field in table.fields track by $index" type="text" ng-model="table.fields[$index]" ng-autocomplete="table.fields[$index]" /required>
+    <button id="button" type="submit">Plan it for me</button></p>
   </form>
+  <p>
+    <button ng-click="addField()">+</button>
+    <button ng-click="removeField()">-</button>
+    <button ng-click="clearFields()">Reset</button>
+  </p>
 </div>

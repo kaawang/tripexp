@@ -15,8 +15,16 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
 
   $scope.table = { fields: [''] };
 
-  $scope.addForm = function() {
-    $scope.table.fields.push('');
+  $scope.addField = function() {
+    $scope.table.fields.push('')
+  }
+
+  $scope.removeField = function() {
+    $scope.table.fields.pop('');
+  }
+
+  $scope.clearFields = function() {
+    $scope.table.fields = [];
   }
 
   // POSTING TRIP DETAILS TO API
@@ -26,20 +34,20 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
        poisAddressArray: $scope.table.fields
     };
     console.log(data.poisAddressArray);
-    // var request = {
-    //   method: "POST",
-    //   url: "http://localhost:3000/api/users/1/trips",
-    //   data: data
-    // }
-    // console.log(request)
-    // $http(request).success(function(response){
-    //   console.log("success")
-    //   console.log(response)
-    //   $location.path("/pois");
-    //   // REDIRECTS UPON SUCCESS
-    // }).error(function(response){
-    //   console.log("error")
-    //   console.log(response)
-    // })
+    var request = {
+      method: "POST",
+      url: "http://localhost:3000/api/users/1/trips/1/pois",
+      data: data
+    }
+    console.log(request)
+    $http(request).success(function(response){
+      console.log("success")
+      console.log(response)
+      $location.path("/pois");
+      // REDIRECTS UPON SUCCESS
+    }).error(function(response){
+      console.log("error")
+      // console.log(response)
+    })
   }
 });  // End of controller
