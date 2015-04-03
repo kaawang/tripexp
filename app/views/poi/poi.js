@@ -13,27 +13,30 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
   
   // ADD FORMS
 
-  $scope.list = [ {} ];
+  $scope.poiCollection = [{ }];
 
   $scope.addField = function() {
-    $scope.table.fields.push()
+    $scope.poiCollection.push({})
   }
 
   $scope.removeField = function() {
-    $scope.table.fields.pop('');
+    if ($scope.poiCollection.length <= 1) {
+      console.log("must have at least 1");
+    } else {
+      $scope.poiCollection.pop();
+    }
   }
 
   $scope.clearFields = function() {
-    $scope.table.fields = [];
+    $scope.poiCollection = [{}];
   }
-
 
   // POSTING TRIP DETAILS TO API
   $scope.submitPois = function(){
     console.log("SCOPE.LIST")
-    console.log($scope.list);
+    console.log($scope.poiCollection);
     var data = {
-       poisAddressArray: $scope.list
+       poisAddressArray: $scope.poiCollection
     };
     console.log("poisAddressArray")
     console.log(data.poisAddressArray);

@@ -11,13 +11,14 @@
   </p>
 </div> -->
 
-<div ng-repeat="item in list">
+<div >
   <form ng-submit="submitPois()" name="poiForm">
-    <label>{{$index + 1}}</label>
-    <input type="text" ng-model="item.value" /required>
+    <div ng-repeat="poi in poiCollection">
+      <label>{{$index + 1 }}</label><input type="text" ng-model="poi.value" ng-autocomplete="poi.value" /required>
+    </div>
     <button id="button" type="submit">Plan it for me</button></p>
+  </form>
+</div>
     <button ng-click="addField()">+</button>
     <button ng-click="removeField()">-</button>
     <button ng-click="clearFields()">Reset</button>
-  </form>
-</div>
