@@ -13,10 +13,10 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
   
   // ADD FORMS
 
-  $scope.table = { fields: [''] };
+  $scope.list = [ {} ];
 
   $scope.addField = function() {
-    $scope.table.fields.push('')
+    $scope.table.fields.push()
   }
 
   $scope.removeField = function() {
@@ -27,12 +27,15 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
     $scope.table.fields = [];
   }
 
+
   // POSTING TRIP DETAILS TO API
   $scope.submitPois = function(){
-    console.log($scope.table);
+    console.log("SCOPE.LIST")
+    console.log($scope.list);
     var data = {
-       poisAddressArray: $scope.table.fields
+       poisAddressArray: $scope.list
     };
+    console.log("poisAddressArray")
     console.log(data.poisAddressArray);
     var request = {
       method: "POST",
@@ -43,7 +46,7 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
     $http(request).success(function(response){
       console.log("success")
       console.log(response)
-      $location.path("/pois");
+      // $location.path("/pois");
       // REDIRECTS UPON SUCCESS
     }).error(function(response){
       console.log("error")

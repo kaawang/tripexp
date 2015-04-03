@@ -1,5 +1,5 @@
 <h2>Add Some Points of Interests!</h2>
-<div>
+<!-- <div>
   <form name="poiForm" ng-submit="submitPois()">
     <input ng-repeat="field in table.fields track by $index" type="text" ng-model="table.fields[$index]" ng-autocomplete="table.fields[$index]" /required>
     <button id="button" type="submit">Plan it for me</button></p>
@@ -9,4 +9,15 @@
     <button ng-click="removeField()">-</button>
     <button ng-click="clearFields()">Reset</button>
   </p>
+</div> -->
+
+<div ng-repeat="item in list">
+  <form ng-submit="submitPois()" name="poiForm">
+    <label>{{$index + 1}}</label>
+    <input type="text" ng-model="item.value" /required>
+    <button id="button" type="submit">Plan it for me</button></p>
+    <button ng-click="addField()">+</button>
+    <button ng-click="removeField()">-</button>
+    <button ng-click="clearFields()">Reset</button>
+  </form>
 </div>
