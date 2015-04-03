@@ -48,7 +48,7 @@ angular.module('tripexp.trip', ['ngAutocomplete', 'pickadate'])
     $http(request).success(function(response){
       console.log("success")
       console.log(response)
-      $location.path("/pois");
+      $location.path("/poi");
       // REDIRECTS UPON SUCCESS
     }).error(function(response){
       console.log("error")
