@@ -49,7 +49,7 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
     $http(request).success(function(response){
       console.log("success")
       console.log(response)
-      // $location.path("/pois");
+      $location.path("/plotmap");
       // REDIRECTS UPON SUCCESS
     }).error(function(response){
       console.log("error")

@@ -9,8 +9,10 @@ var tripexp = angular.module('tripexp', [
   'tripexp.login',
   'tripexp.home',
   'tripexp.trip',
-  'tripexp.poi'
-]).
-config(['$routeProvider', function($routeProvider) {
+  'tripexp.poi',
+  'tripexp.plotmap'
+])
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
-}]);
+}])
+
