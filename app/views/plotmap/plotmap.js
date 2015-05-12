@@ -10,33 +10,41 @@ angular.module('tripexp.plotmap', [])
 
 .directive('mapCanvas', function($http) {
   return {
-
+    // opens Google maps Map Canvas
     link: function initialize() {
-      var map, myLatlng;
+      var map, myLatlng, tripId, poiMarkers, placePOIMarker;
       var bounds = new google.maps.LatLngBounds();
       var mapOptions = {
         mapTypeId: 'roadmap',
-        zoom: 4,
+        zoom: 10,
       };
 
+      // Trip Data Package
       var tripRequest = {
         method: "GET",
         url: "http://localhost:3000/api/users/1/trips/1"
       };
 
-      var poiRequest = {
-        method: "GET",
-        url: "http://localhost:3000/api/users/1/trips/1/pois"
-      };
-
+      // HTTP call to API for Trip Location
       $http(tripRequest).success(function(tripResponse){
-        // console.log('success trip', tripResponse)
         mapOptions.center = new google.maps.LatLng(tripResponse[0].geocode_latitude, tripResponse[0].geocode_longitude);
-        // console.log('in trip request', mapOptions)
+
+        // POI Data Package based off of Trip response
+        var poiRequest = {
+          method: "GET",
+          url: "http://localhost:3000/api/users/1/trips/"+tripResponse[0].id+"/pois"
+        };        
+
+        // HTTP Call for POIs
         $http(poiRequest).success(function(poiResponse){
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        map.setTilt(45);                  
-          console.log('success poi')
+          poiMarkers = poiResponse;
+          for (var i = 0; i <= poiMarkers.length; i++){
+            placePOIMarker = new google.maps.LatLng(poiMarkers[i])
+          }
+          map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+          map.setTilt(45);                  
+        }).error(function(poiResponse){
+          console.log('error poi', poiResponse)
         })
       }).error(function(response){
         console.log('error', response)
