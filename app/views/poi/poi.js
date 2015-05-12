@@ -13,12 +13,12 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
   
   // ADD FORMS
 
-  $scope.poiCollection = [
-    {"value": "T.H.I.S. Place, 105 Street Northwest, Edmonton, AB, Canada"},
-    {"value": "Chipotle Mexican Grill, Market Street, San Francisco, CA, United States"},
-    {"value": "NASCAR Hall of Fame, East Martin Luther King JR Boulevard, Charlotte, NC, United States"},
-    {"value": "Dev Bootcamp, Wall Street, New York, NY, United States"},
-    {"value": "Dev Bootcamp SF, San Francisco, CA, United States"}
+  $scope.poiCollection = [{}
+    // {"value": "T.H.I.S. Place, 105 Street Northwest, Edmonton, AB, Canada"},
+    // {"value": "Chipotle Mexican Grill, Market Street, San Francisco, CA, United States"},
+    // {"value": "NASCAR Hall of Fame, East Martin Luther King JR Boulevard, Charlotte, NC, United States"},
+    // {"value": "Dev Bootcamp, Wall Street, New York, NY, United States"},
+    // {"value": "Dev Bootcamp SF, San Francisco, CA, United States"}
   ];
 
   $scope.addField = function() {

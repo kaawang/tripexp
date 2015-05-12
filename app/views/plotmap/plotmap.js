@@ -29,6 +29,10 @@ angular.module('tripexp.plotmap', [])
       $http(tripRequest).success(function(tripResponse){
         mapOptions.center = new google.maps.LatLng(tripResponse[0].geocode_latitude, tripResponse[0].geocode_longitude);
 
+        // Appending Trip Details into Information Div 
+       $('#information').append(
+          '<p id=trip-details>'+ tripResponse[0].trip_name+'<br>'+tripResponse[0].location+'<br>'+tripResponse[0].start_date+' - '+tripResponse[0].end_date+'</p>'
+        )
         // POI Data Package based off of Trip response
         var poiRequest = {
           method: "GET",
@@ -58,14 +62,12 @@ angular.module('tripexp.plotmap', [])
       }).error(function(response){
         console.log('error', response)
       })
-
-
-
     }
   };
 })
 
 .controller('PlotMapCtrl', function($scope, $http, $route, $location, $window) {
+  // DISPLAY INFORMATION
 
 })  // End of controller
   
