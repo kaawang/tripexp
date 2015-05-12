@@ -38,11 +38,20 @@ angular.module('tripexp.plotmap', [])
         // HTTP Call for POIs
         $http(poiRequest).success(function(poiResponse){
           poiMarkers = poiResponse;
-          for (var i = 0; i <= poiMarkers.length; i++){
-            placePOIMarker = new google.maps.LatLng(poiMarkers[i])
-          }
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
           map.setTilt(45);                  
+          for (var i = 0; i < poiMarkers.length-1; i++){
+            var position = new google.maps.LatLng(poiMarkers[i].geocode_latitude, poiMarkers[i].geocode_longitude);
+            bounds.extend(position);
+            var marker = new google.maps.Marker({
+              position: position,
+              map: map,
+              title: 'Marker down'
+            })
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              console.log('you clicked ', marker)
+            }))
+          } // End for loop
         }).error(function(poiResponse){
           console.log('error poi', poiResponse)
         })
