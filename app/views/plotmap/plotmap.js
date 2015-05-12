@@ -42,8 +42,11 @@ angular.module('tripexp.plotmap', [])
         // HTTP Call for POIs
         $http(poiRequest).success(function(poiResponse){
           poiMarkers = poiResponse;
+          for (var i = 0; i < poiMarkers.length-1; i++){
+            $('#pois').append(poiMarkers[i].address+'<br>');
+          }
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-          map.setTilt(45);                  
+          map.setTilt(45);
           for (var i = 0; i < poiMarkers.length-1; i++){
             var position = new google.maps.LatLng(poiMarkers[i].geocode_latitude, poiMarkers[i].geocode_longitude);
             bounds.extend(position);

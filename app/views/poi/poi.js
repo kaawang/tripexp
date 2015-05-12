@@ -13,12 +13,23 @@ angular.module('tripexp.poi', ['ngAutocomplete'])
   
   // ADD FORMS
 
-  $scope.poiCollection = [{}
-    // {"value": "T.H.I.S. Place, 105 Street Northwest, Edmonton, AB, Canada"},
-    // {"value": "Chipotle Mexican Grill, Market Street, San Francisco, CA, United States"},
-    // {"value": "NASCAR Hall of Fame, East Martin Luther King JR Boulevard, Charlotte, NC, United States"},
-    // {"value": "Dev Bootcamp, Wall Street, New York, NY, United States"},
-    // {"value": "Dev Bootcamp SF, San Francisco, CA, United States"}
+  $scope.poiCollection = [
+    {"value": "Portillo's Hot Dogs, West Ontario Street, Chicago, IL, United States"},
+    {"value": "Girl & the Goat, West Randolph Street, Chicago, IL, United States"},
+    {"value": "Magnificent Mile, Chicago, IL, United States"},
+    {"value": "Lou Malnati's Pizzeria, North Wells Street, Chicago, IL, United States"},
+    {"value": "Navy Pier, East Grand Avenue, Chicago, IL, United States"},
+    {"value": "Momotaro, West Lake Street, Chicago, IL, United States"},
+    {"value": "m.henry, North Clark Street, Chicago, IL, United States"},
+    {"value": "Half Acre Beer Company, North Lincoln Avenue, Chicago, IL, United States"},
+    {"value": "Lincoln Park Zoo, North Clark Street, Chicago, IL, United States"},
+    {"value": "Del Seoul, North Clark Street, Chicago, IL, United States"},
+    {"value": "Kai Zan, West Chicago Avenue, Chicago, IL, United States"},
+    {"value": "Millennium Park, East Randolph Street, Chicago, IL, United States"},
+    {"value": "Joy Yee's Noodles, South Halsted Street, Chicago, IL, United States"},
+    {"value": "Willis Tower, South Wacker Drive, Chicago, IL, United States"},
+    {"value": "Wendella Boats, North Michigan Avenue, Chicago, IL, United States"},
+    {"value": "Slurping Turtle, West Hubbard Street, Chicago, IL, United States"}
   ];
 
   $scope.addField = function() {
