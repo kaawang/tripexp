@@ -42,8 +42,14 @@ angular.module('tripexp.plotmap', [])
         // HTTP Call for POIs
         $http(poiRequest).success(function(poiResponse){
           poiMarkers = poiResponse;
+          var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+          // Info Window Content
+          var infoWindowContent = [
+              ['<span class="street-address">2001 North Clark Street</span>, <span class="locality">Chicago</span>, <span class="region">IL</span> <span class="postal-code">60614</span>, <span class="country-name">United States</span>']
+          ];          
           for (var i = 0; i < poiMarkers.length-1; i++){
-            $('#pois').append(poiMarkers[i].address+'<br>');
+            $('#pois').append(poiMarkers[i].poi_name+'<br>');
           }
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
           map.setTilt(45);
@@ -53,11 +59,15 @@ angular.module('tripexp.plotmap', [])
             var marker = new google.maps.Marker({
               position: position,
               map: map,
-              title: 'Marker down'
+              title: poiMarkers[i].poi_name
             })
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
-              console.log('you clicked ', marker)
-            }))
+                return function() {
+                  console.log(i)
+                    infoWindow.setContent(infoWindowContent[i][0]);
+                    infoWindow.open(map, marker);
+                }
+            })(marker, i));
           } // End for loop
         }).error(function(poiResponse){
           console.log('error poi', poiResponse)
@@ -70,7 +80,6 @@ angular.module('tripexp.plotmap', [])
 })
 
 .controller('PlotMapCtrl', function($scope, $http, $route, $location, $window) {
-  // DISPLAY INFORMATION
 
 })  // End of controller
   
