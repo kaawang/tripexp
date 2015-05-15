@@ -45,9 +45,13 @@ angular.module('tripexp.plotmap', [])
           var infoWindow = new google.maps.InfoWindow(), marker, i;
 
           // Info Window Content
-          var infoWindowContent = [
-              ['<span class="street-address">2001 North Clark Street</span>, <span class="locality">Chicago</span>, <span class="region">IL</span> <span class="postal-code">60614</span>, <span class="country-name">United States</span>']
-          ];          
+          var infoWindowContent = [];          
+          for (var i = 0; i < poiMarkers.length; i++) {
+            infoWindowContent.push([
+              "<h3>"+poiMarkers[i].poi_name+"</h3><span>Phone Number: "+poiMarkers[i].phone_number+"</span><br><span>Address: "+poiMarkers[i].address+"</span><br><span>Hours Open: </span><br><span>"+poiMarkers[i].open_hours+"</span>"
+              ])
+          };
+
           for (var i = 0; i < poiMarkers.length-1; i++){
             $('#pois').append(poiMarkers[i].poi_name+'<br>');
           }
